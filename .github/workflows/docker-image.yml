@@ -14,7 +14,6 @@ jobs:
         run: |
           git clone https://github.com/DrKLO/Telegram.git $HOME/telegram-android
           cd $HOME/telegram-android
-          git checkout release-10.1.0_3919
           docker build -t telegram-build .
           docker run --rm -v "$PWD":/home/source telegram-build
   
