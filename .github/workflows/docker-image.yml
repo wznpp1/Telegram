@@ -1,0 +1,22 @@
+name: Docker Image CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build APK
+        run: |
+          git checkout release-10.1.0_3919
+          docker build -t telegram-build .
+          docker run --rm -v "$PWD":/home/source telegram-build
+  
+      - name: Actions apk
+        uses: actions/upload-artifact@v3
+        with:
+          name: upload apk
+          path: /apk/afat/standalone/app.apk
