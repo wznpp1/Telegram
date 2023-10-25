@@ -28,9 +28,9 @@ public class ChooseSpeedLayout {
     ActionBarMenuSlider.SpeedSlider slider;
 
     private static final float MIN_SPEED = 0.2f;
-    private static final float MAX_SPEED = 2.5f;
+    private static final float MAX_SPEED = 5.5f;
 
-    ActionBarMenuSubItem[] speedItems = new ActionBarMenuSubItem[5];
+    ActionBarMenuSubItem[] speedItems = new ActionBarMenuSubItem[8];
     public ChooseSpeedLayout(Context context, PopupSwipeBackLayout swipeBackLayout, Callback callback) {
         speedSwipeBackLayout = new ActionBarPopupWindow.ActionBarPopupWindowLayout(context, 0, null);
         speedSwipeBackLayout.setFitItems(true);
@@ -126,6 +126,30 @@ public class ChooseSpeedLayout {
         });
         item.setSelectorColor(0x0fffffff);
         speedItems[4] = item;
+
+        item = ActionBarMenuItem.addItem(speedSwipeBackLayout, R.drawable.msg_speed_superfast, "3f", false, null);
+        item.setColors(0xfffafafa, 0xfffafafa);
+        item.setOnClickListener((view) -> {
+            callback.onSpeedSelected(3f, true, true);
+        });
+        item.setSelectorColor(0x0fffffff);
+        speedItems[5] = item;
+
+        item = ActionBarMenuItem.addItem(speedSwipeBackLayout, R.drawable.msg_speed_superfast, "4f", false, null);
+        item.setColors(0xfffafafa, 0xfffafafa);
+        item.setOnClickListener((view) -> {
+            callback.onSpeedSelected(4f, true, true);
+        });
+        item.setSelectorColor(0x0fffffff);
+        speedItems[6] = item;
+
+        item = ActionBarMenuItem.addItem(speedSwipeBackLayout, R.drawable.msg_speed_superfast, "5f", false, null);
+        item.setColors(0xfffafafa, 0xfffafafa);
+        item.setOnClickListener((view) -> {
+            callback.onSpeedSelected(5f, true, true);
+        });
+        item.setSelectorColor(0x0fffffff);
+        speedItems[7] = item;
     }
 
     public void update(float currentVideoSpeed, boolean isFinal) {
